@@ -78,19 +78,19 @@ function SourceBadge({ article }: { article: NewsArticle }) {
 
   if (!domain) {
     return (
-      <div className={`flex-none w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold shrink-0 ${color}`}>
+      <div className={`flex-none w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold shrink-0 ${color}`}>
         {initial}
       </div>
     );
   }
 
   return (
-    <div className={`flex-none w-7 h-7 rounded-lg overflow-hidden shrink-0 flex items-center justify-center ${color}`}>
+    <div className={`flex-none w-9 h-9 rounded-xl overflow-hidden shrink-0 flex items-center justify-center ${color}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
         alt=""
-        className="w-5 h-5 object-contain"
+        className="w-6 h-6 object-contain"
         onError={(e) => {
           // Favicon failed — swap to letter initial
           const parent = e.currentTarget.parentElement!;
@@ -112,19 +112,19 @@ export default function NewsPanel({ articles }: { articles: NewsArticle[] }) {
             href={a.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-3 py-3 px-1 hover:bg-zinc-50 rounded-lg transition-colors group cursor-pointer"
+            className="flex items-start gap-4 py-4 px-2 hover:bg-white rounded-xl transition-colors group cursor-pointer"
           >
             <SourceBadge article={a} />
 
             <div className="min-w-0 flex-1">
-              <p className="text-[13px] leading-snug text-zinc-700 group-hover:text-zinc-900 line-clamp-2 transition-colors">
+              <p className="text-base leading-snug text-zinc-700 group-hover:text-zinc-900 line-clamp-2 transition-colors font-medium">
                 {a.title}
               </p>
-              <p className="text-[11px] text-zinc-400 mt-1 flex items-center gap-1.5 flex-wrap">
+              <p className="text-sm text-zinc-400 mt-1.5 flex items-center gap-2 flex-wrap">
                 <span>{a.category === "india" ? "🇮🇳" : "🌍"}</span>
                 <span className="font-medium text-zinc-500">{a.source}</span>
                 {a.publishedAt && (
-                  <><span className="text-zinc-200">·</span>
+                  <><span className="text-zinc-300">·</span>
                   <span>{timeAgo(a.publishedAt)}</span></>
                 )}
               </p>
